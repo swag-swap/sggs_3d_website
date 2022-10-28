@@ -49,6 +49,7 @@ function init() {
         load.innerHTML = ( loadnum * 100 ) + '%';
         if(loadnum >1){
             load.style.display = "none"; 
+            document.getElementById('load').style.display = "none";
         }
 
 	}, function(error){
