@@ -47,7 +47,7 @@ function init() {
 		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
         var loadnum = xhr.loaded / xhr.total ;
         load.innerHTML = ( loadnum * 100 ) + '%';
-        if(loadnum == 1){
+        if(loadnum >1){
             load.style.display = "none"; 
         }
 
