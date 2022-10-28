@@ -14,6 +14,7 @@ let camera, controls, scene, renderer;
 var animation = true; // For text 
 
 const sggsUrl = new URL('../assets/sggs5.glb',import.meta.url);
+const load = document.getElementById('loader');
 
 init();
 animate();
@@ -24,6 +25,37 @@ function init() {
     scene = new THREE.Scene();
     scene.background = new THREE.Color( 0xcccccc );
     scene.fog = new THREE.FogExp2( 0xcccccc, 0.001 );
+
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath(
+      "https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/js/libs/draco/"
+    );
+    
+    const assetLoader = new GLTFLoader();
+    assetLoader.setDRACOLoader(dracoLoader);
+  
+
+    assetLoader.load(sggsUrl.href , function(gltf){
+        const model = gltf.scene;
+        scene.add(model);
+        model.scale.set(100, 100, 100);
+        
+        model.position.set(-400,0,-600);
+    } , // called while loading is progressing
+	function ( xhr ) {
+
+		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+        var loadnum = xhr.loaded / xhr.total ;
+        load.innerHTML = ( loadnum * 100 ) + '%';
+        if(loadnum == 1){
+            load.style.display = "none"; 
+        }
+
+	}, function(error){
+        console.log(error);
+    })
+
+
 
     //Setting renderer
     renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -53,24 +85,6 @@ function init() {
 
     controls.maxPolarAngle = Math.PI / 2;
 
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath(
-      "https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/js/libs/draco/"
-    );
-    
-    const assetLoader = new GLTFLoader();
-    assetLoader.setDRACOLoader(dracoLoader);
-  
-
-    assetLoader.load(sggsUrl.href , function(gltf){
-        const model = gltf.scene;
-        scene.add(model);
-        model.scale.set(100, 100, 100);
-        
-        model.position.set(-400,0,-600);
-    } , undefined , function(error){
-        console.log(error);
-    })
 
 
     // const axesHelper = new THREE.AxesHelper(100)
