@@ -18,14 +18,6 @@ const load = document.getElementById('loader');
 
 
 
-// Getting mouse pointer location and adding event listener
-const raycaster = new THREE.Raycaster();
-const clickMouse = new THREE.Vector2();
-// const moveMouse = new THREE.Vector2();
-var draggable = THREE.Object3D;
-button = document.getElementById("button");
-main = document.getElementById("main")
-
 init();
 animate();
 
@@ -236,28 +228,6 @@ function animate() {
         controls.update(); // only required if controls.enableDamping = true, or if controls.autoRotate = true
 
 
-        window.addEventListener('click', event=>{
-            if(animation){
-
-                clickMouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-                clickMouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-                raycaster.setFromCamera( clickMouse, camera );
-
-                const found = raycaster.intersectObjects( scene.children );
-
-                if(found.length > 0 && found[0].object.userData.draggable){
-                    draggable = found[0].object
-                    // console.log(`found ${draggable.userData.name}`)
-                    document.getElementById(draggable.userData.name).style.display = "block";
-                    main.style.display = "block";
-                    animation = false;
-                }
-            }
-
-
-        })
-
 
         render();
 
@@ -273,6 +243,38 @@ function render() {
 }
 
 
+
+// Getting mouse pointer location and adding event listener
+const raycaster = new THREE.Raycaster();
+const clickMouse = new THREE.Vector2();
+// const moveMouse = new THREE.Vector2();
+var draggable = THREE.Object3D;
+button = document.getElementById("button");
+main = document.getElementById("main")
+
+
+
+window.addEventListener('click', event=>{
+    if(animation){
+
+        clickMouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        clickMouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+        raycaster.setFromCamera( clickMouse, camera );
+
+        const found = raycaster.intersectObjects( scene.children );
+
+        if(found.length > 0 && found[0].object.userData.draggable){
+            draggable = found[0].object
+            // console.log(`found ${draggable.userData.name}`)
+            document.getElementById(draggable.userData.name).style.display = "block";
+            main.style.display = "block";
+            animation = false;
+        }
+    }
+
+
+})
 
 
 // Adding event listener to button if button click then display of main div is none
