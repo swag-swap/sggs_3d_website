@@ -258,21 +258,21 @@ main = document.getElementById("main")
 
 
 
-window.addEventListener('click', event=>{
+document.addEventListener('click', event=>{
     if(animation){
 
-        clickMouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-        clickMouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
         raycaster.setFromCamera( clickMouse, camera );
+        clickMouse.x = ( event.clientX / document.innerWidth ) * 2 - 1;
+        clickMouse.y = - ( event.clientY / document.innerHeight ) * 2 + 1;
+
 
         const found = raycaster.intersectObjects( scene.children );
 
         if(found.length > 0 && found[0].object.userData.draggable){
             draggable = found[0].object
             // console.log(`found ${draggable.userData.name}`)
-            document.getElementById(draggable.userData.name).style.display = "block";
             main.style.display = "block";
+            document.getElementById(draggable.userData.name).style.display = "block";
             animation = false;
         }
     }
@@ -284,8 +284,8 @@ window.addEventListener('click', event=>{
 // Adding event listener to button if button click then display of main div is none
 button.addEventListener('click',()=>{
     animation=true;
-    animate();
     document.getElementById(draggable.userData.name).style.display = "none";
     main.style.display = "none";
+    animate();
 })
 
