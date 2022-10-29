@@ -17,13 +17,6 @@ const sggsUrl = new URL('../assets/sggs5.glb',import.meta.url);
 const load = document.getElementById('loader');
 
 
-// Getting mouse pointer location and adding event listener
-const raycaster = new THREE.Raycaster();
-const clickMouse = new THREE.Vector2(1,1);
-// const moveMouse = new THREE.Vector2();
-var draggable = THREE.Object3D;
-button = document.getElementById("button");
-main = document.getElementById("main")
 
 init();
 animate();
@@ -49,7 +42,7 @@ function init() {
         scene.add(model);
         model.scale.set(100, 100, 100);
         
-        model.position.set(-400,0,-600);
+        model.position.set(-400,0,-640);
     } , // called while loading is progressing
 	function ( xhr ) {
 
@@ -176,7 +169,7 @@ function init() {
     const sport = new THREE.Mesh(boxGeometry , boxMaterial)
     scene.add(sport)
     sport.scale.set(130 ,50 ,50)
-    sport.position.set(-1050,90,-200)
+    sport.position.set(-1070,90,-200)
     sport.userData.draggable = true;
     sport.userData.name = '_sport';
 
@@ -193,8 +186,8 @@ function init() {
     const girlh = new THREE.Mesh(boxGeometry , boxMaterial)
     scene.add(girlh)
     girlh.scale.set(130 ,50 ,50)
+    girlh.position.set(550,80,-230)
     girlh.rotation.y = -Math.PI/4
-    girlh.position.set(550,80,-250)
     girlh.userData.draggable = true;
     girlh.userData.name = '_girlh';
 
@@ -217,7 +210,6 @@ function init() {
     window.addEventListener( 'resize', onWindowResize );
 
 
-    document.addEventListener( 'click', onMouseMove );
 }
 
 function onWindowResize() {
@@ -229,39 +221,21 @@ function onWindowResize() {
     // console.log(camera.position)
 }
 
-function onMouseMove( event ) {
-
-    event.preventDefault();
-
-    
-    clickMouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-    clickMouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-}
 
 
 function animate() {
-    if(animation===true){
+    if(animation){
 
         requestAnimationFrame( animate );
 
         controls.update(); // only required if controls.enableDamping = true, or if controls.autoRotate = true
 
-        raycaster.setFromCamera( clickMouse, camera );
-
-        const found = raycaster.intersectObjects( scene.children );
-
-        if(found.length > 0 && found[0].object.userData.draggable){
-            draggable = found[0].object
-            // console.log(`found ${draggable.userData.name}`)
-            document.getElementById(draggable.userData.name).style.display = "block";
-            main.style.display = "block";
-            animation = false;
-        }
 
         render();
 
     }   
+
+
 
 
 }
@@ -274,30 +248,37 @@ function render() {
 
 
 
+// Getting mouse pointer location and adding event listener
+const raycaster = new THREE.Raycaster();
+const clickMouse = new THREE.Vector2();
+// const moveMouse = new THREE.Vector2();
+var draggable = THREE.Object3D;
+button = document.getElementById("button");
+main = document.getElementById("main")
 
 
 
-// window.addEventListener('click', event=>{
-//     if(animation){
+window.addEventListener('click', event=>{
+    if(animation){
 
-//         clickMouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-//         clickMouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+        clickMouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        clickMouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
-//         raycaster.setFromCamera( clickMouse, camera );
+        raycaster.setFromCamera( clickMouse, camera );
 
-//         const found = raycaster.intersectObjects( scene.children );
+        const found = raycaster.intersectObjects( scene.children );
 
-//         if(found.length > 0 && found[0].object.userData.draggable){
-//             draggable = found[0].object
-//             // console.log(`found ${draggable.userData.name}`)
-//             document.getElementById(draggable.userData.name).style.display = "block";
-//             main.style.display = "block";
-//             animation = false;
-//         }
-//     }
+        if(found.length > 0 && found[0].object.userData.draggable){
+            draggable = found[0].object
+            // console.log(`found ${draggable.userData.name}`)
+            document.getElementById(draggable.userData.name).style.display = "block";
+            main.style.display = "block";
+            animation = false;
+        }
+    }
 
 
-// })
+})
 
 
 // Adding event listener to button if button click then display of main div is none
