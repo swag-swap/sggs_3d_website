@@ -16,6 +16,16 @@ var animation = true; // For text
 const sggsUrl = new URL('../assets/sggs5.glb',import.meta.url);
 const load = document.getElementById('loader');
 
+
+
+// Getting mouse pointer location and adding event listener
+const raycaster = new THREE.Raycaster();
+const clickMouse = new THREE.Vector2();
+// const moveMouse = new THREE.Vector2();
+var draggable = THREE.Object3D;
+button = document.getElementById("button");
+main = document.getElementById("main")
+
 init();
 animate();
 
@@ -44,10 +54,10 @@ function init() {
     } , // called while loading is progressing
 	function ( xhr ) {
 
-		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+		// console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
         var loadnum = xhr.loaded / xhr.total ;
         load.innerHTML = ( loadnum * 100 ) + '%';
-        if(loadnum >1){
+        if(loadnum >=1){
             load.style.display = "none"; 
             document.getElementById('load').style.display = "none";
         }
@@ -225,6 +235,30 @@ function animate() {
 
         controls.update(); // only required if controls.enableDamping = true, or if controls.autoRotate = true
 
+
+        window.addEventListener('click', event=>{
+            if(animation){
+
+                clickMouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+                clickMouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+                raycaster.setFromCamera( clickMouse, camera );
+
+                const found = raycaster.intersectObjects( scene.children );
+
+                if(found.length > 0 && found[0].object.userData.draggable){
+                    draggable = found[0].object
+                    // console.log(`found ${draggable.userData.name}`)
+                    document.getElementById(draggable.userData.name).style.display = "block";
+                    main.style.display = "block";
+                    animation = false;
+                }
+            }
+
+
+        })
+
+
         render();
 
     }   
@@ -239,35 +273,7 @@ function render() {
 }
 
 
-// Getting mouse pointer location and adding event listener
-const raycaster = new THREE.Raycaster();
-const clickMouse = new THREE.Vector2();
-const moveMouse = new THREE.Vector2();
-var draggable = THREE.Object3D;
-button = document.getElementById("button");
-main = document.getElementById("main")
 
-window.addEventListener('click', event=>{
-    if(animation){
-
-        clickMouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-        clickMouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-        raycaster.setFromCamera( clickMouse, camera );
-
-        const found = raycaster.intersectObjects( scene.children );
-
-        if(found.length > 0 && found[0].object.userData.draggable){
-            draggable = found[0].object
-            // console.log(`found ${draggable.userData.name}`)
-            document.getElementById(draggable.userData.name).style.display = "block";
-            main.style.display = "block";
-            animation = false;
-        }
-    }
-
-
-})
 
 // Adding event listener to button if button click then display of main div is none
 button.addEventListener('click',()=>{
@@ -276,218 +282,4 @@ button.addEventListener('click',()=>{
     document.getElementById(draggable.userData.name).style.display = "none";
     main.style.display = "none";
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import * as THREE from 'three';
-// import { PlaneGeometry } from 'three';
-// import * as dat from 'dat.gui';
-// import {FlyControls, OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
-// import {GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-
-// const cakeUrl = new URL('../assets/sggs2.glb',import.meta.url);
-
-// const renderer = new THREE.WebGLRenderer();
-
-// renderer.setSize(window.innerWidth , window.innerHeight);
-
-// document.body.appendChild(renderer.domElement);
-
-
-// const scene = new THREE.Scene();
-// const camera = new THREE.PerspectiveCamera(
-//     75,
-//     window.innerWidth / window.innerHeight,
-//     0.1,
-//     1000
-// );  
-
-// const orbit = new OrbitControls(camera,renderer.domElement);
-
-
-// camera.position.set(0,2,5);
-
-// orbit.update();
-
-// const boxGeometry = new THREE.BoxGeometry();
-// const boxMaterial = new THREE.MeshStandardMaterial({color: 0x00FF00});
-// const box = new THREE.Mesh(boxGeometry,boxMaterial);
-// scene.add(box);
-
-// const planeGeometry = new THREE.PlaneGeometry(30,30);
-// const planeMaterial = new THREE.MeshStandardMaterial({
-//     color: 0xFFFFFF,
-//     side: THREE.DoubleSide
-// })
-// const plane = new THREE.Mesh(planeGeometry, planeMaterial);
-// // scene.add(plane)
-
-// plane.rotation.x = -0.5 * Math.PI ;
-
-// const gui = new dat.GUI();
-
-// const options = {
-//     planeColor: '#ffea00'
-// }
-// gui.addColor(options,'planeColor').onChange(function(e){
-//     plane.material.color.set(e)
-// })
-
-
-
-// const ambientLight = new THREE.AmbientLight(0x333333);
-// scene.add(ambientLight);
-
-// const directionalLight = new THREE.DirectionalLight(0xFFFFFF , 0.1);
-// scene.add(directionalLight);
-// directionalLight.position.set(-20,20,0)
-
-// const dLightHelper = new THREE.DirectionalLightHelper(directionalLight,5);
-// scene.add(dLightHelper)
-
-// const axesHelper = new THREE.AxesHelper(5);
-// scene.add(axesHelper);
-
-// const assetLoader = new GLTFLoader();
-
-// assetLoader.load(cakeUrl.href , function(gltf){
-//     const model = gltf.scene;
-//     scene.add(model);
-    
-//     model.position.set(2,0,0);
-// } , undefined , function(error){
-//     console.log(error);
-// })
-
-// // const loader = new GLTFLoader();
-// // loader.load('../assets/temp.glb', function(gltf){
-// //     console.log(gltf)
-// //     const root = gltf.scene;
-// //     // root.scale.set()
-// //     scene.add(root)
-// // }, function(xhr){
-// //     console.log((xhr.loader/xhr.total * 100) + "% loaded")
-// // },function(error){
-// //     console.log(error)
-// // })
-
-
-
-// function animate(time) {
-//     box.rotation.x = time / 1000;
-//     box.rotation.y = time / 1000;
-//     renderer.render(scene,camera);
-// }
-
-
-// renderer.setAnimationLoop(animate)
-
 
