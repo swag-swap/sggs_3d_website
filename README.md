@@ -4,7 +4,6 @@ Here you will get the innformation about Shri Guru Gobind Singhji Institute of e
 
 Here you can explore all the environment in SGGS college.
 
-Go in site https://sggs.netlify.app to see all things.
 
 Just click on name of department you will get information about that branch.
 
