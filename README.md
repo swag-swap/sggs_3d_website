@@ -7,4 +7,4 @@ Here you can explore all the environment in SGGS college.
 
 Just click on name of department you will get information about that branch.
 
-[Link](src/)
+![Image of SGGS Model](./sggs.png)
