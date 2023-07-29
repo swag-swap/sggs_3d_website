@@ -1,10 +1,10 @@
-# SGGS college information
+# r3f-vite-starter
+A boilerplate to build R3F projects
 
-Here you will get the innformation about Shri Guru Gobind Singhji Institute of engineering and technology.How college look like, going in a 3D space,etc
+```
+yarn
+yarn dev
+```
 
-Here you can explore all the environment in SGGS college.
 
-
-Just click on name of department you will get information about that branch.
-
-![Image of SGGS Model](./sggs.png)
+![image](https://user-images.githubusercontent.com/6551176/221732091-23ee52cb-4150-42fa-b998-43628d7a6b0d.png)
