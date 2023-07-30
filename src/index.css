@@ -93,4 +93,5 @@ body {
   color: White;
   background-color: transparent;
   border: none;
+  display: absolute;
 }
