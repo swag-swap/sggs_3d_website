@@ -1,25 +1,26 @@
 import { Canvas } from "@react-three/fiber";
 import { Experience } from "./components/Experience";
 import { Suspense, useState } from "react";
-import { Loader, Stats } from "@react-three/drei";
+import { Loader, ScrollControls, Stats } from "@react-three/drei";
 
 
 
 
-function App() {
-  const [start, setStart] = useState(false);
-
-
+function App() { 
   return (
     <>
-      <Canvas shadows camera={{ position: [7.3901768904158045, 2.9379620199168963, 14.311720504826889], fov: 20 }}>
+ 
+      <Canvas
+        camera={{ position: [7.3901768904158045, 2.9379620199168963, 14.311720504826889], fov: 20 }}>
         <Suspense fallback={null}>
-          <Experience />
-        </Suspense> 
+          <ScrollControls pages={5} damping={3}>
+            <Experience />
+          </ScrollControls>
+        </Suspense>
 
       </Canvas>
       <Loader
-        preload 
+        preload
         dataInterpolation={(p) => `Welcome to SGGS! ${p.toFixed(2)}%`}
       />
     </>

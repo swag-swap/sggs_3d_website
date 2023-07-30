@@ -46,18 +46,18 @@ export function Sggs(props) {
       <mesh geometry={nodes.Textile.geometry} material={materials.lambert35SG} position={[-0.963, 0, -0.195]} rotation={[-Math.PI / 2, 0, -0.755]}>
         <mesh geometry={nodes.Textile002.geometry} material={materials.lambert35SG} position={[0.005, 0.471, 0]} />
       </mesh>
-      <mesh geometry={nodes.Text_Swapnil.geometry} material={materials['Material of name']} position={[9.963, 0.008, 9.252]} />
-      <mesh geometry={nodes.Text_rnxg.geometry} material={materials['Material of name']} position={[0.208, 0.35, -1.533]} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Text_boysC.geometry} material={materials['Material of name']} position={[-13.39, 1.366, 2.623]} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Text_boysH.geometry} material={materials['Material of name']} position={[-10.578, 1.761, -0.038]} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Text_cse.geometry} material={materials['Material of name']} position={[-5.535, 1.196, -2.624]} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Text_production.geometry} material={materials['Material of name']} position={[-3.721, 0.962, -4.53]} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Text_Textile_civil.geometry} material={materials['Material of name']} position={[-3.383, 1.197, -1.501]} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh onClick={(e) => console.log('Swapnil')} geometry={nodes.Text_Swapnil.geometry} material={materials['Material of name']} position={[9.963, 0.008, 9.252]} />
+      <mesh onClick={(e) => console.log('Rnxg')} geometry={nodes.Text_rnxg.geometry} material={materials['Material of name']} position={[0.208, 0.35, -1.533]} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh onClick={(e) => console.log('bc')} geometry={nodes.Text_boysC.geometry} material={materials['Material of name']} position={[-13.39, 1.366, 2.623]} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh onClick={(e) => console.log('bh')} geometry={nodes.Text_boysH.geometry} material={materials['Material of name']} position={[-10.578, 1.761, -0.038]} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh onClick={(e) => console.log('cse')} geometry={nodes.Text_cse.geometry} material={materials['Material of name']} position={[-5.535, 1.196, -2.624]} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh onClick={(e) => console.log('production')} geometry={nodes.Text_production.geometry} material={materials['Material of name']} position={[-3.721, 0.962, -4.53]} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh onClick={(e) => console.log('textile,civil')} geometry={nodes.Text_Textile_civil.geometry} material={materials['Material of name']} position={[-3.383, 1.197, -1.501]} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.rnxg.geometry} material={materials.World_ap} position={[0.142, -0.013, -1.47]} rotation={[Math.PI / 2, 0, -0.818]} />
       <mesh geometry={nodes.Production.geometry} material={materials.lambert44SG} position={[-3.423, 0.003, -4.402]} rotation={[-Math.PI / 2, 0, -2.26]}>
         <mesh geometry={nodes.Object_10006.geometry} material={materials.lambert51SG} position={[-0.135, -0.013, 0]} />
       </mesh>
-      <mesh geometry={nodes.Instrumentation_and_electrical_name.geometry} material={materials['Material of name']} position={[-2.116, 1.384, 0.323]} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh onClick={(e) => console.log('instru')} geometry={nodes.Instrumentation_and_electrical_name.geometry} material={materials['Material of name']} position={[-2.116, 1.384, 0.323]} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.icescream_house_Xanh_nhat_0001.geometry} material={materials.Xanh_nhat} position={[0.86, 0.299, -4.22]} rotation={[-Math.PI / 2, 0, -0.721]}>
         <mesh geometry={nodes.icescream_house_Burger_Shop_Coffee_HouseBlack_0001.geometry} material={materials.Burger_Shop_Coffee_HouseBlack}>
           <mesh geometry={nodes.icescream_house_Blue_0001.geometry} material={materials.Blue} />
@@ -83,7 +83,7 @@ export function Sggs(props) {
           <mesh geometry={nodes.Cube001.geometry} material={materials.Concrete} />
           <mesh geometry={nodes.Cube001_1.geometry} material={materials.gray} />
           <mesh geometry={nodes.Cube001_2.geometry} material={materials.blue} />
-          <mesh geometry={nodes.sggs_name.geometry} material={materials.Glowing} position={[-0.719, 0.019, 0.198]} rotation={[Math.PI / 2, 0, 0]} />
+          <mesh onClick={(e) => console.log('sggs')} geometry={nodes.sggs_name.geometry} material={materials.Glowing} position={[-0.719, 0.019, 0.198]} rotation={[Math.PI / 2, 0, 0]} />
         </group>
         <mesh geometry={nodes.Object_184001.geometry} material={materials.material_0} position={[1.037, -0.048, 6.859]} rotation={[0, 1.571, 0]} />
         <mesh geometry={nodes.Object_184002.geometry} material={materials.material_0} position={[3.91, -0.048, 6.528]} rotation={[0, 1.571, 0]} />
@@ -125,8 +125,8 @@ export function Sggs(props) {
         <mesh geometry={nodes.Trees003.geometry} material={materials.Leaves} position={[-1.143, -0.048, -2.677]} rotation={[0, 0.904, 0]} />
         <mesh geometry={nodes.Trees004.geometry} material={materials.Leaves} position={[-2.438, -0.027, -1.1]} rotation={[0, 0.904, 0]} />
       </group>
-      <mesh geometry={nodes.Girl_Hostel_name.geometry} material={materials['Material of name']} position={[8.962, 0.735, 3.767]} rotation={[Math.PI / 2, 0, 0.655]} />
-      <mesh geometry={nodes['E&Tc_name'].geometry} material={materials['Material of name']} position={[-1.391, 1.336, 4.378]} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh onClick={(e) => console.log('ghn')} geometry={nodes.Girl_Hostel_name.geometry} material={materials['Material of name']} position={[8.962, 0.735, 3.767]} rotation={[Math.PI / 2, 0, 0.655]} />
+      <mesh onClick={(e) => console.log('e&tc')} geometry={nodes['E&Tc_name'].geometry} material={materials['Material of name']} position={[-1.391, 1.336, 4.378]} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.CSE.geometry} material={materials.lambert35SG} position={[-3.927, 0, -0.757]} rotation={[-Math.PI / 2, 0, -2.278]}>
         <mesh geometry={nodes.Object_10003.geometry} material={materials.lambert51SG} position={[0.074, -1.725, 0.007]} rotation={[-0.025, 0.011, -1.617]} />
         <mesh geometry={nodes.Textile001.geometry} material={materials.lambert35SG} position={[-3.326, -1.728, 0]} rotation={[0, 0, Math.PI / 2]} />
@@ -171,9 +171,9 @@ export function Sggs(props) {
           <mesh geometry={nodes.Sphere_2.geometry} material={materials.glass2} />
         </group>
       </group>
-      <mesh geometry={nodes.Admin_name.geometry} material={materials['Material of name']} position={[4.071, 1.573, 2.335]} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh onClick={(e) => console.log('admin')} geometry={nodes.Admin_name.geometry} material={materials['Material of name']} position={[4.071, 1.573, 2.335]} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.a_complex.geometry} material={materials.lambert8SG} position={[0.892, 0.022, 0.996]} rotation={[-Math.PI / 2, 0, 2.415]} />
-      <mesh geometry={nodes.Text_sports.geometry} material={materials['Material of name']} position={[-7.438, 0.637, 4.406]} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh onClick={(e) => console.log('sports')} geometry={nodes.Text_sports.geometry} material={materials['Material of name']} position={[-7.438, 0.637, 4.406]} rotation={[Math.PI / 2, 0, 0]} />
     </group>
   )
 }
