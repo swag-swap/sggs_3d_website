@@ -5,13 +5,13 @@ Command: npx gltfjsx@6.2.10 public/models/sggs.gltf
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei' 
-import { usePlay } from './Play'
+import { usePlay } from '../context/Play'
 
 export function Sggs(props) {
   const { nodes, materials } = useGLTF('models/sggs.gltf')
   
-  const {page, setPage,id,setId} = usePlay();
-  console.log(page,",",id);
+  const { setPage, setId} = usePlay();
+  // console.log(page,",",id);
 
   return (
     <group {...props} dispose={null}>
@@ -88,7 +88,7 @@ export function Sggs(props) {
           <mesh geometry={nodes.Cube001.geometry} material={materials.Concrete} />
           <mesh geometry={nodes.Cube001_1.geometry} material={materials.gray} />
           <mesh geometry={nodes.Cube001_2.geometry} material={materials.blue} />
-          <mesh geometry={nodes.sggs_name.geometry} material={materials.Glowing} position={[-0.719, 0.019, 0.198]} rotation={[Math.PI / 2, 0, 0]} />
+          <mesh onClick={(e) => {setPage(true); setId(13)}} geometry={nodes.sggs_name.geometry} material={materials.Glowing} position={[-0.719, 0.019, 0.198]} rotation={[Math.PI / 2, 0, 0]} />
         </group>
         <mesh geometry={nodes.Object_184001.geometry} material={materials.material_0} position={[1.037, -0.048, 6.859]} rotation={[0, 1.571, 0]} />
         <mesh geometry={nodes.Object_184002.geometry} material={materials.material_0} position={[3.91, -0.048, 6.528]} rotation={[0, 1.571, 0]} />

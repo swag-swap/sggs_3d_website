@@ -107,11 +107,17 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  height: 90vh;
-  width: 90vw;
-  color: black;
-  background-color: white;
-  margin: 5vw;
+  height: 80vh;
+  width: 80vw;
+  color: white;
+  background-color: rgba(91, 79, 79, 0.531);
+  margin: 5vw ;
+  border: 2px solid transparent;
+  background: linear-gradient(71deg, #080509, #1a171c, #080509);
+  /* background-clip: padding-box; */
+  border-radius: 45px;
+  padding: 40px;
+  overflow: auto;
 }
 
 .page--disable {
