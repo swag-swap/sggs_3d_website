@@ -6,6 +6,8 @@
   height: 100vh;
   background-color: #3d4341;
   background-image: linear-gradient(147deg, #052b1f 0%, #97aaa1 100%);
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 body {
@@ -94,4 +96,24 @@ body {
   background-color: transparent;
   border: none;
   display: absolute;
+}
+
+.content {
+  overflow: hidden;
+  position: relative;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 90vh;
+  width: 90vw;
+  color: black;
+  background-color: white;
+  margin: 5vw;
+}
+
+.page--disable {
+  display: none;
 }
