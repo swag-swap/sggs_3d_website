@@ -26,7 +26,7 @@ export const Experience = () => {
         fov={30}
         makeDefault
       /> */}
-      <MapControls  enableZoom={true}/>
+      <MapControls  enableZoom={false} enableRotate={false} minDistance={20}/>
       <Stars speed={5} saturation={10} />
       <color attach="background" args={[0x000000]} /> 
       <fog attach="fog" args={[0x000000, 10, 35]} />

@@ -6,101 +6,36 @@
   height: 100vh;
   background-color: #3d4341;
   background-image: linear-gradient(147deg, #052b1f 0%, #97aaa1 100%);
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 body {
   margin: 0;
-}
-
-.loadingScreen {
-  position: fixed;
+  overflow: hidden; 
+} 
+.close {
+  position: absolute;
   top: 0;
-  left: 0;
-  bottom: 0;
   right: 0;
-  background-color: inherit;
-  background-image: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 8s;
-  z-index: 1;
-  font-family: "Almendra", serif;
+  display: block;
+  width: 50px;
+  height: 50px;
+  font-size: 0;
 }
-
-.loadingScreen__board {
-  max-width: 600px;
-  padding: 64px;
-  background-color: transparent;
-  border-radius: 24px;
-  text-align: center;
-  transition: opacity 0.4s;
-}
-
-.loadingScreen__title {
-  font-size: 4rem;
-  color: rgb(255, 255, 255);
-  margin: 0;
-  margin-bottom: 8px;
-}
-
- 
-
-.loadingScreen__progress {
+.close:before, 
+.close:after {
   position: absolute;
-  /* bottom: 50%;
+  top: 50%;
   left: 50%;
-  transform: translate(50%,50%); */
-  width: 80%;
-  height: 12px;
+  width: 5px;
+  height: 20px;
+  background-color: #F0F0F0;
+  transform: rotate(45deg) translate(-50%, -50%);
+  transform-origin: top left;
+  content: '';
 }
-
-.loadingScreen__progress__value {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background-color: rgb(0 0 0 / 50%);
-  transition: width 0.4s;
-}
-
-.loadingScreen--started {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.loadingScreen--started .loadingScreen__board {
-  opacity: 0;
-}
-
-.checkbox {
-  position: absolute;
-  z-index: 10;
-  font-family: sans-serif;
-  font-size: 11px;
-  padding: 8px;
-  right: 16px;
-  background: #1a1a1a;
-  color: #eeeeee;
-  border-left: 3px solid #ffd738;
-}
-
-.checkbox > input[type='checkbox'] {
-  vertical-align: middle;
-}
-
-.text_names {
-  color: White;
-  background-color: transparent;
-  border: none;
-  display: absolute;
-}
-
-.content {
-  overflow: hidden;
-  position: relative;
+.close:after {
+  transform: rotate(-45deg) translate(-50%, -50%);
 }
 
 .page {
@@ -117,9 +52,10 @@ body {
   /* background-clip: padding-box; */
   border-radius: 45px;
   padding: 40px;
-  overflow: auto;
+  overflow: auto; 
 }
+ 
 
 .page--disable {
-  display: none;
+  display: none; 
 }

@@ -24,7 +24,8 @@ export const Page = () => {
         <div
             className={`overlay ${page ? "page" : "page--disable"} `}
         >
-            <button onClick={(e) => setPage(false)}>close</button>
+            <a onClick={(e) => setPage(false)} href="#" className="close" role="button">close</a>
+            {/* <button onClick={(e) => setPage(false)}>close</button> */}
             {id === 1 ? <Swapnil /> : id === 2 ? <Admin /> : id === 3 ? <Girl /> : id === 4 ? <Entc /> : id === 5 ? <Rnxg /> : id === 6 ? <Instru /> : id === 7 ? <Textile /> : id === 8 ? <Production /> : id === 9 ? <Cse /> : id === 10 ? <Boysh /> : id === 11 ? <Boysc /> : id === 12 ? <Sports /> : <Sggsinfo />}
 
 
