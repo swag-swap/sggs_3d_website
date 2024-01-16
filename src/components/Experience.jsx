@@ -26,14 +26,29 @@ export const Experience = () => {
         fov={30}
         makeDefault
       /> */}
-      <MapControls  enableZoom={false} enableRotate={false} minDistance={20}/>
+      <MapControls
+        enableZoom={false}
+        enableRotate={false}
+        minDistance={20}
+        dampingFactor={0.2}
+        // screenSpacePanning={true}
+        maxPolarAngle={Math.PI / 2}
+        minPolarAngle={Math.PI / 4}
+        camera={camera.current}
+      />
       <Stars speed={5} saturation={10} />
       <color attach="background" args={[0x000000]} /> 
       <fog attach="fog" args={[0x000000, 10, 35]} />
       <ambientLight intensity={0.1} />
       <Environment preset="night" />
       <Sggs /> 
-      <ScrollControls enabled/>
+      <ScrollControls
+        damping={0.1}
+        offset={[0, 0, 2]}
+        scrollSpeed={0.2}
+        lockZoom={true}
+        camera={camera.current}
+      />
     </>
   );
 };
